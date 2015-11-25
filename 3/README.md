@@ -2,7 +2,7 @@
 
 #### November 25, 2015
 
-We need to code a tail recursive algorithm, as efficient as possible, that, for any two vectors of integers *u*, *v*, sorted in ascending order, returns the number of elements that appear in both vectors.
+We need to code a **tail recursive algorithm**, as efficient as possible, that, for any two vectors of integers *u*, *v*, sorted in ascending order, returns the number of elements that appear in both vectors.
 
 * **Specify** a recursive function to implement this algorithm.
 * **Describe** the recursive approach you are going to use.
