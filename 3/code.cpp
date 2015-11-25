@@ -122,7 +122,7 @@ int countCommonElements(int u[], int v[], int nu, int nv, int top) {
 }
 
 /*
-In ALL recursive call, at least one of "nv" or "nu" is decreased ==> The size of the problem decreases.
+In ALL recursive calls, at least one of "nv" or "nu" is decreased ==> The size of the problem decreases.
 The base case happens when the size of the problem is small enought (at least one array has size 0).
 The recursive case takes into account all cases from the last 3 else-if cases, one always happens).
 
