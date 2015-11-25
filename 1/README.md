@@ -1,4 +1,4 @@
-# Efficiency of algorithms
+# Design and analysis of iterative algorithms
 
 #### November 4, 2015
 
