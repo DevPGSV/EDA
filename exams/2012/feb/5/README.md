@@ -11,7 +11,7 @@ Especificar, diseñar, verificar y razonar el coste del algoritmo itertivo que, d
 
 ##### Solución
 
-[Especificación](specification.md)
-[Diseño](design.cpp)
-[Verificación](verification.md)
-[Coste](cost.md)
+ * [Especificación](specification.md)
+ * [Diseño](design.cpp)
+ * [Verificación](verification.md)
+ * [Coste](cost.md)
