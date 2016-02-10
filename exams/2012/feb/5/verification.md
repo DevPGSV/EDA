@@ -18,6 +18,8 @@ I = { (0 <= i <= n) ^ doesIncrease(0, top, vect) ^ doesDecrease(top, i, vect) }
 ### Steps
 
 ##### {P} E {I}
+
+```
 {P} i = 0 {I}
 
 {P} => pmd (i = 0 ; I) ?
@@ -39,7 +41,8 @@ I = { (0 <= i <= n) ^ doesIncrease(0, top, vect) ^ doesDecrease(top, i, vect) }
     (n >= 1)   ==>   (1 <= n)   ==>   (0 <= n)
     (0 <= n)   ==>   (0 <= n)
     {P}        ==>   pmd (i = 0 ; I)
-    
+```
+
 ##### {I ^ B} C {I}
 
 
