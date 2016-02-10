@@ -24,11 +24,12 @@ int main() {
 template <typename Type>
 Type getTop(Type vect[], int n) {
 	Type top = vect[0];
-
-	int i = 0;
+   
+	int i = 0, topI = 0;
 	while (i < n) {
 		if (vect[i] > top) {
-			top = vect[i];
+         topI = i;
+			top = vect[topI];
 		}
 		i++;
 	}
