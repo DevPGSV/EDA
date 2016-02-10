@@ -8,7 +8,7 @@ I = invariant
 
 ```
 P = { (lenght(vect) = n) ^ (n >= 1) ^ (isMountain(vect, n)) }
-Q = { doesIncrease(0, top, vect) ^ doesDecrease(top, n - 1, vect) }
+Q = { top = vect[topI] ^ doesIncrease(0, topI, vect) ^ doesDecrease(topI, n - 1, vect) }
 E = { i = 0 }
 B = { i < n }
 C = { if (vect[i] > top) {top = vect[i];}, i++; }
@@ -71,11 +71,60 @@ pmd ( topI = i,top = vect[topI], i++; I)
 pmd (i++; I)
    <=> (I)[i -> i+1]
    <=> (0 <= i+1 <= n) ^ top = vect[topI] ^ doesIncrease(0, topI, vect) ^ doesDecrease(topI, i+1, vect)
+   <=> pmd (i++; I)
    
    I: (0 <= i)   =>   (0 <= i+1)
-   ......
+   B: (i < n)    =>   (i+1 <= n)
+   I: top = vect[topI]    =>    top = vect[topI]
+   I: doesIncrease(0, topI, vect)    =>    doesIncrease(0, topI, vect)
+   doesDecrease(topI, i, vect) ^ (vect[i] <= top)    =>    doesDecrease(topI, i+1, vect)
+   
+   {I ^ B ^ (vect[i] <= top)}   =>   (0 <= i+1 <= n) ^ top = vect[topI] ^ doesIncrease(0, topI, vect) ^ doesDecrease(topI, i+1, vect)
+   {I ^ B ^ (vect[i] <= top)}   =>   pmd ( i++; I)
 ```
 
+##### {I ^ ¬B} (no code after while) {Q}
 
+```
+I ^ ¬B =>  Q   ?
 
-WIP
+   I: top = vect[topI]   =>   top = vect[topI]
+   I: doesIncrease(0, topI, vect)   =>   doesIncrease(0, topI, vect)
+   
+   I:  i <= n    |
+   ¬B: i >= n    | ==>   i = n
+   
+   doesDecrease(topI, i, vect) ^ i = n    =>    doesDecrease(topI, n, vect)    =>   doesDecrease(topI, n - 1, vect)
+
+   I ^ ¬B =>  top = vect[topI] ^ doesIncrease(0, topI, vect) ^ doesDecrease(topI, n - 1, vect)
+   I ^ ¬B => Q
+```
+
+##### Cota:
+
+```
+c(i, topI, top) = n - i
+```
+
+###### I ^ B    =>    i >= 0
+
+```
+   I: 0 <= i   =>   i >= 0
+   
+   I ^ B    =>    i >= 0
+```
+
+###### {I ^ B ^ T = n-i} C {i < T}
+
+```
+{I ^ B ^ T = n-i} ..., i = i + 1 {n-i < T}
+
+   pmd (i = i + 1; n-i < T)
+   <=> (n-i < T) [i -> i + 1]
+   <=> (n-(i+1) < T)
+   <=> (n-i-1 < T)
+   
+   (I ^ B ^ T = n-i)   ==>   n-i-1<n-i   ? Correct:  X - 1 < X
+   
+```
+
