@@ -7,25 +7,43 @@
 
 #include <iostream>
 #include <string>
+#include "Deque.h"
 
-bool checkPalinIterative1(std::string str) {
-	for (int i = 0; i < str.length() / 2; i++) {
-		if (str[i] != str[str.length() - 1 - i]) return false;
+bool checkPalinIterative(std::string str) {
+	Deque<char> p = Deque<char>();
+	for (int i = 0; i < str.length(); i++) {
+		//if (str[i] != ' ')
+		p.push_back(str[i]);
 	}
+	while (p.size() > 0) {
+		while (p.size() > 0 && p.front() == ' ') p.pop_front();
+		if (p.size() <= 1) return true;
+		while (p.size() > 0 && p.back() == ' ') p.pop_back();
+		if (p.size() <= 1) return true;
+
+		if (p.front() == p.back()) {
+			p.pop_front();
+			p.pop_back();
+		} else {
+			return false;
+		}
+	}
+
 	return true;
 }
 
 int main() {
-	std::cout << checkPalinIterative1("");
-	std::cout << checkPalinIterative1("aa");
-	std::cout << checkPalinIterative1("assa");
-	std::cout << checkPalinIterative1("assssa");
-	std::cout << checkPalinIterative1("qwertyytrewq");
-	std::cout << checkPalinIterative1("qwerty0ytrewq") << std::endl;
+	std::cout << checkPalinIterative("");
+	std::cout << checkPalinIterative("   ");
+	std::cout << checkPalinIterative("a a ");
+	std::cout << checkPalinIterative("a ss a  ");
+	std::cout << checkPalinIterative("  assss   a ");
+	std::cout << checkPalinIterative("qw  er t yyt rewq     ");
+	std::cout << checkPalinIterative(" q w e r t y 0 y trewq") << std::endl;
 
-	std::cout << checkPalinIterative1("awegew");
-	std::cout << checkPalinIterative1("aaaafaaa");
-	std::cout << checkPalinIterative1("aaaafaaa");
+	std::cout << checkPalinIterative("awegew");
+	std::cout << checkPalinIterative("aaaafaaa");
+	std::cout << checkPalinIterative("aaaafaaa");
 
 
 	return 0;
