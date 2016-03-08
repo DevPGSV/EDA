@@ -43,6 +43,8 @@ int main() {
 	std::cout << std::endl;
 	printStackR(s);
 	std::cout << std::endl;
+	s.printAll();
+	std::cout << std::endl;
 
 	return 0;
 }

@@ -1,15 +1,15 @@
 /**
   @file Stack.h
 
-  Implementación del TAD Pila utilizando un
-  vector dinámico cuyo tamaño va creciendo si
+  Implementaciï¿½n del TAD Pila utilizando un
+  vector dinï¿½mico cuyo tamaï¿½o va creciendo si
   es necesario.
 
   Estructura de Datos y Algoritmos
-  Facultad de Informática
+  Facultad de Informï¿½tica
   Universidad Complutense de Madrid
 
- (c) Marco Antonio Gómez Martín, 2012
+ (c) Marco Antonio Gï¿½mez Martï¿½n, 2012
 */
 #ifndef __STACK_H
 #define __STACK_H
@@ -17,28 +17,28 @@
 #include "Exceptions.h"
 
 /**
- Implementación del TAD Pila utilizando vectores dinámicos.
+ Implementaciï¿½n del TAD Pila utilizando vectores dinï¿½micos.
 
  Las operaciones son:
 
  - EmptyStack: -> Stack. Generadora implementada en el
-   constructor sin parámetros.
+   constructor sin parï¿½metros.
  - Push: Stack, Elem -> Stack. Generadora
  - pop: Stack - -> Stack. Modificadora parcial.
  - top: Stack - -> Elem. Observadora parcial.
  - empty: Stack -> Bool. Observadora.
  - size: Stack -> Entero. Observadora.
 
- @author Marco Antonio Gómez Martín
+ @author Marco Antonio Gï¿½mez Martï¿½n
  */
 template <class T>
 class Stack {
 public:
 
-	/** Tamaño inicial del vector dinámico. */
+	/** Tamaï¿½o inicial del vector dinï¿½mico. */
 	static const int TAM_INICIAL = 10;
 
-	/** Constructor; operación EmptyStack */
+	/** Constructor; operaciï¿½n EmptyStack */
 	Stack() {
 		inicia();
 	}
@@ -49,7 +49,7 @@ public:
 	}
 
 	/**
-	 Apila un elemento. Operación generadora.
+	 Apila un elemento. Operaciï¿½n generadora.
 
 	 @param elem Elemento a apilar.
 	*/
@@ -61,8 +61,8 @@ public:
 	}
 	
 	/**
-	 Desapila un elemento. Operación modificadora parcial,
-	 que falla si la pila está vacía.
+	 Desapila un elemento. Operaciï¿½n modificadora parcial,
+	 que falla si la pila estï¿½ vacï¿½a.
 
 	 pop(Push(elem, p)) = p
 	 error: pop(EmptyStack)
@@ -74,8 +74,8 @@ public:
 	}
 
 	/**
-	 Devuelve el elemento en la cima de la pila. Operación
-	 observadora parcial, que falla si la pila está vacía.
+	 Devuelve el elemento en la cima de la pila. Operaciï¿½n
+	 observadora parcial, que falla si la pila estï¿½ vacï¿½a.
 
 	 top(Push(elem, p) = elem
 	 error: top(EmptyStack)
@@ -88,32 +88,38 @@ public:
 		return _v[_numElems - 1];
 	}
 
+	const void printAll() {
+		for (int i = 0; i < _numElems; i++) {
+			std::cout << _v[i] << " ";
+		}
+	}
+
 	/**
-	 Devuelve true si la pila no tiene ningún elemento.
+	 Devuelve true si la pila no tiene ningï¿½n elemento.
 
 	 empty(EmptyStack) = true
 	 empty(Push(elem, p)) = false
 
-	 @return true si la pila no tiene ningún elemento.
+	 @return true si la pila no tiene ningï¿½n elemento.
 	 */
 	bool empty() const {
 		return _numElems == 0;
 	}
 
 	/**
-	 Devuelve el número de elementos que hay en la
+	 Devuelve el nï¿½mero de elementos que hay en la
 	 pila.
 	 size(EmptyStack) = 0
 	 size(Push(elem, p)) = 1 + size(p)
 
-	 @return Número de elementos.
+	 @return Nï¿½mero de elementos.
 	 */
 	int size() const {
 		return _numElems;
 	}
 
 	// //
-	// MÉTODOS DE "FONTANERÍA" DE C++ QUE HACEN VERSÁTIL
+	// Mï¿½TODOS DE "FONTANERï¿½A" DE C++ QUE HACEN VERSï¿½TIL
 	// A LA CLASE
 	// //
 
@@ -122,7 +128,7 @@ public:
 		copia(other);
 	}
 
-	/** Operador de asignación */
+	/** Operador de asignaciï¿½n */
 	Stack<T> &operator=(const Stack<T> &other) {
 		if (this != &other) {
 			libera();
@@ -131,7 +137,7 @@ public:
 		return *this;
 	}
 
-	/** Operador de comparación. */
+	/** Operador de comparaciï¿½n. */
 	bool operator==(const Stack<T> &rhs) const {
 		if (_numElems != rhs._numElems)
 			return false;
@@ -182,10 +188,10 @@ private:
 	/** Puntero al array que contiene los datos. */
 	T *_v;
 
-	/** Tamaño del vector _v. */
+	/** Tamaï¿½o del vector _v. */
 	unsigned int _tam;
 
-	/** Número de elementos reales guardados. */
+	/** Nï¿½mero de elementos reales guardados. */
 	unsigned int _numElems;
 };
 
